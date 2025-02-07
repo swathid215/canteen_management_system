@@ -1,0 +1,98 @@
+body{
+    background-color: #fff;
+}
+.main{
+    margin: 100px auto 50px auto;
+    max-width: 960px;
+    color:brown;
+    font-size: 20px;
+    border: 1px blue solid;
+    box-sizing: border-box;
+    padding: 80px 0px 80px 200px;
+    background-color: bisque;
+}
+.login{
+    height: 37.6px;;
+    width: 100%;
+    border-radius: 4px;
+    border:none;
+    margin: 16px 0px;
+}
+.header{
+    text-align: center;
+    font-family: 'Times New Roman', Times, serif;
+    margin-top: 50px;
+    color: crimson;
+}
+input,textarea{
+    border: none !important;
+}
+
+#billing,#product_name,#cost{
+    color: red;
+    margin-top: 16px;
+    text-align: end;
+}
+#billing{
+    text-decoration: underline;
+}
+
+/* MODAL */
+.modal {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Sit on top */
+    left: 0;
+    top: 0%;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+  }
+  
+  /* Modal Content/Box */
+  .modal-content {
+    background-color:khaki;
+    margin: 15% auto; 
+    padding: 20px;
+    border: 1px solid #888;
+    width: 70%; 
+  }
+
+  .modal-content h1,.modal-content h4{
+    text-align: center;
+    color:green;
+  }
+
+  .modal-content h1{
+    font-size: 100px;
+  }
+  
+  /* The Close Button */
+  .close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+  }
+  
+  .close:hover,
+  .close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+  }
+
+  @media (min-width: 412px) and (max-width: 920px){
+    .footer{
+        display: none;
+    }
+    .main{
+        margin: 0px;
+        padding: 40px;
+    }
+    #area{
+        width: 350px;
+    }
+}

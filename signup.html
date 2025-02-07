@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="signup.css">
+    <title>Sign Up</title>
+  </head>
+  <body>
+    <!-- Form Section -->
+    <div class="container main">
+      <div class="row">
+        <form name="signup" onsubmit="return validation()" method="post">
+          <div class="col-md-12">
+            <div class="mb-3">
+              <label for="NAME" class="form-label">Name</label>
+              <input type="text" name="Name" class="form-control" id="NAME" required>
+              <span id="error-name" style="color: red; font-size: 10px;"></span>
+            </div>
+
+            <div class="mb-3">
+              <label for="EMAIL" class="form-label">Email address</label>
+              <input type="email" name="Email" class="form-control" id="EMAIL" required>
+              <span id="error-email" style="color: red; font-size: 10px;"></span>
+            </div>
+
+            <div class="mb-3">
+              <label for="PHONE" class="form-label">Contact Number</label>
+              <input type="tel" name="Phone" class="form-control" id="PHONE" required>
+              <span id="error-number" style="color: red; font-size: 10px;"></span>
+            </div>
+
+            <div class="mb-3">
+              <label for="PASSWORD" class="form-label">New Password</label>
+              <input type="password" name="Password" class="form-control" id="PASSWORD" required>
+              <span id="error-password" style="color: red; font-size: 10px;"></span>
+            </div>
+
+            <div class="mb-3">
+              <label for="CPASSWORD" class="form-label">Confirm Password</label>
+              <input type="password" class="form-control" id="CPASSWORD" required>
+              <span id="error-c-password" style="color: red; font-size: 10px;"></span>
+            </div>
+
+            <button type="submit" id="butn" class="btn btn-primary login">Sign Up</button>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <script>
+      // Validation Function
+      function validation() {
+        // Clear previous error messages
+        document.getElementById("error-name").innerText = "";
+        document.getElementById("error-email").innerText = "";
+        document.getElementById("error-number").innerText = "";
+        document.getElementById("error-password").innerText = "";
+        document.getElementById("error-c-password").innerText = "";
+
+        var name = document.getElementById("NAME").value;
+        var email = document.getElementById("EMAIL").value;
+        var phone = document.getElementById("PHONE").value;
+        var password = document.getElementById("PASSWORD").value;
+        var confirmPassword = document.getElementById("CPASSWORD").value;
+
+        var valid = true;
+
+        // Name validation
+        if (name.trim() === "") {
+          document.getElementById("error-name").innerText = "Name is required!";
+          valid = false;
+        }
+
+        // Email validation
+        var emailPattern = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+        if (!emailPattern.test(email)) {
+          document.getElementById("error-email").innerText = "Invalid email address!";
+          valid = false;
+        }
+
+        // Phone validation (basic check for length)
+        if (phone.trim().length < 10) {
+          document.getElementById("error-number").innerText = "Phone number must be at least 10 digits!";
+          valid = false;
+        }
+
+        // Password validation
+        if (password.length < 6) {
+          document.getElementById("error-password").innerText = "Password must be at least 6 characters!";
+          valid = false;
+        }
+
+        // Confirm password validation
+        if (password !== confirmPassword) {
+          document.getElementById("error-c-password").innerText = "Passwords do not match!";
+          valid = false;
+        }
+
+        // If valid, redirect to the index page
+        if (valid) {
+          alert("Sign Up Completed!");
+          // Redirect to the home page
+          window.location.href = "index.html";
+        }
+
+        return false; // Prevent default form submission
+      }
+    </script>
+  </body>
+</html>

@@ -1,0 +1,124 @@
+body{
+    background-color: #f1f1f1;
+    font-family:'Times New Roman', Times, serif;
+    font-size: 18px;
+}
+
+.navbar-collapse{
+    flex-grow: .5;
+}
+
+.popular h2{
+    font-weight: 500;
+    font-size: 36px;
+}
+
+
+.transition img:hover{
+    transition: .5s;
+}
+
+.transition{
+    overflow: hidden;
+}
+
+.transition:hover img{
+    transition: .5s;
+    transform: scale(1.05);
+} 
+.transition:hover{
+    box-shadow: 10px 10px 10px grey;
+}
+.transition img{
+    transition: 1s;
+}
+.container{
+    max-width: 1480px;
+}
+
+
+.footer{
+    background-color: black;
+    color: white;
+    padding: 100px 100px 80px 100px;
+    margin-top: 200px;
+    font-size: 18px;
+}
+ul{
+    list-style-type: none;
+    padding: 0;
+}
+
+li{
+    margin-top: 10px;
+
+}
+
+a{
+    text-decoration: none;
+    color: white;
+}
+p{
+    text-align: center;
+}
+
+
+/* Section container styling */
+.canteen-section {
+    text-align: center;
+    margin-top: 20px;
+    padding: 0 5%; /* Add padding for responsiveness */
+  }
+  
+  /* Title styling */
+  .canteen-title {
+    font-size: 36px;
+    font-weight: bold;
+    color: #f09a00; /* Matches theme */
+    margin-bottom: 40px;
+  }
+  
+  /* Options container styling */
+  .canteen-options {
+    display: flex;
+    flex-direction: column; /* Stack boxes vertically */
+    gap: 30px; /* Space between the boxes */
+    margin: 0 auto;
+  }
+  
+  /* Individual box styling */
+  .canteen-box {
+    background-color: #ffe6b3; /* Soft theme color */
+    width: 100%; /* Occupy full width of the container */
+    height: 200px; /* Adjust height to be prominent */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 20px; /* Curved edges */
+    font-size: 24px;
+    font-weight: bold;
+    color: #5a5a5a;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    cursor: pointer;
+  }
+  
+  /* Hover effect */
+  .canteen-box:hover {
+    transform: scale(1.03);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+  }
+  
+  /* Ensure the boxes adapt to screen sizes */
+  @media (min-height: 900px) {
+    .canteen-box {
+      height: 300px; /* Increase height for taller screens */
+    }
+  }
+  
+  @media (max-width: 768px) {
+    .canteen-box {
+      font-size: 20px;
+    }
+  }
+  

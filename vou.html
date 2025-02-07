@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>College Food Vouchers</title>
+
+  <!-- BOOTSTRAP CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+
+  <!-- FontAwesome for Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css" 
+  integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+  <style>
+    /* Basic Body Style */
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: linear-gradient(135deg, #FF6F61, #FFB347);
+      color: #333;
+      line-height: 1.6;
+      margin: 0;
+      padding: 0;
+    }
+
+    /* Hero Section Styling */
+    .hero-section {
+      background: url('https://source.unsplash.com/1600x600/?college,food,meal') no-repeat center center/cover;
+      color: white;
+      padding: 100px 20px;
+      text-align: center;
+      background-size: cover;
+      background-position: center;
+    }
+
+    .hero-section h1 {
+      font-size: 3rem;
+      font-weight: 700;
+      margin-bottom: 20px;
+    }
+
+    .hero-section p {
+      font-size: 1.2rem;
+      font-weight: 300;
+    }
+
+    /* Card Styling for Vouchers */
+    .voucher-card {
+      border: none;
+      border-radius: 15px;
+      overflow: hidden;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    }
+
+    .voucher-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    }
+
+    .voucher-card img {
+      height: 200px;
+      object-fit: cover;
+    }
+
+    .voucher-card .card-body {
+      background-color: #fff;
+      padding: 20px;
+      text-align: center;
+    }
+
+    .voucher-card .card-body h5 {
+      font-size: 1.5rem;
+      color: #333;
+      font-weight: 600;
+      margin-bottom: 10px;
+    }
+
+    .voucher-card .card-body p {
+      font-size: 1rem;
+      color: #777;
+      margin-bottom: 20px;
+    }
+
+    .voucher-card .btn {
+      background-color: #FF6F61;
+      color: white;
+      border-radius: 30px;
+      font-weight: 500;
+      padding: 10px 30px;
+      transition: background-color 0.3s ease;
+    }
+
+    .voucher-card .btn:hover {
+      background-color: #FFB347;
+    }
+
+    /* Footer Styling */
+    .footer {
+      background-color: #212121;
+      color: #fff;
+      text-align: center;
+      padding: 40px 20px;
+      position: relative;
+    }
+
+    .footer a {
+      color: #FFB347;
+      font-size: 1.5rem;
+      margin: 0 10px;
+      text-decoration: none;
+    }
+
+    .footer a:hover {
+      color: #FF6F61;
+    }
+
+    .footer p {
+      margin: 20px 0 10px;
+      font-size: 1rem;
+    }
+
+    .footer .social-icons i {
+      margin: 0 15px;
+      font-size: 1.8rem;
+      transition: color 0.3s ease;
+    }
+
+    .footer .social-icons i:hover {
+      color: #FF6F61;
+    }
+
+    /* Media Query for Responsiveness */
+    @media (max-width: 768px) {
+      .hero-section h1 {
+        font-size: 2rem;
+      }
+
+      .voucher-card {
+        margin-bottom: 20px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<!-- Hero Section -->
+<div class="hero-section">
+  <h1>Delicious College Food Vouchers</h1>
+  <p>Exclusive deals and discounts for students at your campus canteen. Claim your food voucher today!</p>
+</div>
+
+<!-- Vouchers Section -->
+<div class="container my-5">
+  <h2 class="text-center mb-4 text-white">Top Food Vouchers for College Students</h2>
+  <div class="row g-4">
+    <!-- Voucher 1 -->
+    <div class="col-md-4">
+      <div class="voucher-card">
+        <img src="https://tse4.mm.bing.net/th?id=OIP.rRtZzREUM2SSKP6iEJB4WwHaFj&pid=Api&P=0&h=220" class="card-img-top" alt="Burger Voucher">
+        <div class="card-body">
+          <h5>Free Fries with Any Burger</h5>
+          <p>Get a free serving of fries with every burger purchase at the campus canteen.</p>
+          <button class="btn" onclick="generateCode()">Claim Now</button>
+        </div>
+      </div>
+    </div>
+    <!-- Voucher 2 -->
+    <div class="col-md-4">
+      <div class="voucher-card">
+        <img src="https://images-gmi-pmc.edge-generalmills.com/2f28d701-acca-4e42-b166-441061e0b204.jpg" class="card-img-top" alt="Pizza Voucher">
+        <div class="card-body">
+          <h5>Buy 1 Pizza, Get 1 Free</h5>
+          <p>Grab this pizza deal at the college canteen. Share with a friend and save big!</p>
+          <button class="btn" onclick="generateCode()">Claim Now</button>
+        </div>
+      </div>
+    </div>
+    <!-- Voucher 3 -->
+    <div class="col-md-4">
+      <div class="voucher-card">
+        <img src="https://tse4.mm.bing.net/th?id=OIP.GCaBRGwwI8OToDJSjn8tSgHaEK&pid=Api&P=0&h=220" class="card-img-top" alt="Coffee Voucher">
+        <div class="card-body">
+          <h5>50% Off on Coffee</h5>
+          <p>Fuel up for your next class with a 50% discount on all coffee drinks in the college café.</p>
+          <button class="btn" onclick="generateCode()">Claim Now</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Footer -->
+<div class="footer">
+  <p>&copy; 2024 College Food Vouchers. All Rights Reserved.</p>
+  <div class="social-icons">
+    <a href="#" class="me-3"><i class="fa-brands fa-facebook"></i></a>
+    <a href="#" class="me-3"><i class="fa-brands fa-instagram"></i></a>
+    <a href="#" class="me-3"><i class="fa-brands fa-twitter"></i></a>
+  </div>
+</div>
+
+<!-- BOOTSTRAP JS -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+<script>
+  function generateCode() {
+    const letters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+    const numbers = "0123456789";
+
+    let code = "";
+    for (let i = 0; i < 3; i++) {
+      code += letters.charAt(Math.floor(Math.random() * letters.length));
+    }
+    for (let i = 0; i < 4; i++) {
+      code += numbers.charAt(Math.floor(Math.random() * numbers.length));
+    }
+
+    alert("Your voucher code is: ${code}");
+  }
+</script>
+
+</body>
+</html>

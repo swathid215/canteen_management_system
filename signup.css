@@ -1,0 +1,40 @@
+body{
+    background-color: white;
+    font-family: 'Times New Roman', Times, serif;
+}
+.heading{
+    margin-top: 130px;
+    text-align: center;
+    color: cornflowerblue;
+    letter-spacing: 6px;
+}
+.heading h1{
+    font-size: 54px;
+    text-shadow: 2px 2px 5px rgba(255,0,0,.7), 2px 2px 5px purple;
+}
+.main{
+    margin: 50px auto 50px auto;
+    max-width: 540px;
+    border: blue 1px groove;
+    padding: 70px;
+    background-color:bisque;
+}
+button{
+    position: relative;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,0%);
+}
+.login{
+    margin-top: 32px;
+    height: 37.6px;;
+    width: 376px;
+    border-radius: 4px;
+    border:none;
+}
+
+@media (min-width: 415px) and (max-width: 920px){
+    .footer{
+        display: none;
+    }
+}

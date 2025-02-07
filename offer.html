@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Exclusive Food Offers for College Students</title>
+
+  <!-- BOOTSTRAP CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+
+  <!-- FontAwesome for Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css" 
+  integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+  <style>
+    /* Basic Body Style */
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: linear-gradient(135deg, #FF6F61, #FFB347);
+      color: #333;
+      line-height: 1.6;
+      margin: 0;
+      padding: 0;
+    }
+
+    /* Hero Section Styling */
+    .hero-section {
+      background: url('https://source.unsplash.com/1600x600/?canteen,food,meal') no-repeat center center/cover;
+      color: white;
+      padding: 100px 20px;
+      text-align: center;
+      background-size: cover;
+      background-position: center;
+    }
+
+    .hero-section h1 {
+      font-size: 3rem;
+      font-weight: 700;
+      margin-bottom: 20px;
+    }
+
+    .hero-section p {
+      font-size: 1.2rem;
+      font-weight: 300;
+    }
+
+    /* Card Styling for Food Offers */
+    .offer-card {
+      border: none;
+      border-radius: 15px;
+      overflow: hidden;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    }
+
+    .offer-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    }
+
+    .offer-card img {
+      height: 200px;
+      object-fit: cover;
+    }
+
+    .offer-card .card-body {
+      background-color: #fff;
+      padding: 20px;
+      text-align: center;
+    }
+
+    .offer-card .card-body h5 {
+      font-size: 1.5rem;
+      color: #333;
+      font-weight: 600;
+      margin-bottom: 10px;
+    }
+
+    .offer-card .card-body p {
+      font-size: 1rem;
+      color: #777;
+      margin-bottom: 20px;
+    }
+
+    .offer-card .btn {
+      background-color: #FF6F61;
+      color: white;
+      border-radius: 30px;
+      font-weight: 500;
+      padding: 10px 30px;
+      transition: background-color 0.3s ease;
+    }
+
+    .offer-card .btn:hover {
+      background-color: #FFB347;
+    }
+
+    /* Footer Styling */
+    .footer {
+      background-color: #212121;
+      color: #fff;
+      text-align: center;
+      padding: 40px 20px;
+      position: relative;
+    }
+
+    .footer a {
+      color: #FFB347;
+      font-size: 1.5rem;
+      margin: 0 10px;
+      text-decoration: none;
+    }
+
+    .footer a:hover {
+      color: #FF6F61;
+    }
+
+    .footer p {
+      margin: 20px 0 10px;
+      font-size: 1rem;
+    }
+
+    .footer .social-icons i {
+      margin: 0 15px;
+      font-size: 1.8rem;
+      transition: color 0.3s ease;
+    }
+
+    .footer .social-icons i:hover {
+      color: #FF6F61;
+    }
+
+    /* Media Query for Responsiveness */
+    @media (max-width: 768px) {
+      .hero-section h1 {
+        font-size: 2rem;
+      }
+
+      .offer-card {
+        margin-bottom: 20px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<!-- Hero Section -->
+<div class="hero-section">
+  <h1>Exclusive Food Offers for College Students</h1>
+  <p>Enjoy amazing food discounts and deals at your college canteen and nearby food joints. Stay energized with these tasty offers!</p>
+</div>
+
+<!-- Food Offers Section -->
+<div class="container my-5">
+  <h2 class="text-center mb-4 text-white">Popular Food Offers for Students</h2>
+  <div class="row g-4">
+    <!-- Offer 1: Free Snack with Meal -->
+    <div class="col-md-4">
+      <div class="offer-card">
+        <img src="https://tse1.mm.bing.net/th?id=OIP.bF0lT7Qnka5ZqihWsOFCPgHaE8&pid=Api&P=0&h=220" class="card-img-top" alt="Free Snack Offer">
+        <div class="card-body">
+          <h5>Free Snack with Meal</h5>
+          <p>Get a free snack (fries, chips, or dessert) with every meal order at the campus canteen. Perfect for snack lovers!</p>
+          <button class="btn">Claim Offer</button>
+        </div>
+      </div>
+    </div>
+    <!-- Offer 2: Buy 1, Get 1 Free on Pizza -->
+    <div class="col-md-4">
+      <div class="offer-card">
+        <img src="https://img.freepik.com/premium-photo/pepperoni-pizza-orange-color-background_665398-313.jpg" class="card-img-top" alt="Pizza Offer">
+        <div class="card-body">
+          <h5>Buy 1, Get 1 Free on Pizza</h5>
+          <p>Enjoy a delicious pizza meal at the canteen with a special buy 1, get 1 free offer. Share with a friend!</p>
+          <button class="btn">Claim Offer</button>
+        </div>
+      </div>
+    </div>
+    <!-- Offer 3: Discount on Coffee -->
+    <div class="col-md-4">
+      <div class="offer-card">
+        <img src="https://image.freepik.com/free-photo/cup-coffee-orange-background_38810-4031.jpg" class="card-img-top" alt="Coffee Discount">
+        <div class="card-body">
+          <h5>50% Off on Coffee</h5>
+          <p>Fuel your study session with 50% off on all coffee and hot drinks at the campus café. Stay caffeinated!</p>
+          <button class="btn">Claim Offer</button>
+        </div>
+      </div>
+    </div>
+    <!-- Offer 4: Combo Meal Deals -->
+    <div class="col-md-4">
+      <div class="offer-card">
+        <img src="https://tse4.mm.bing.net/th?id=OIP.oGqdg_AHAxce3sv1aeuQigHaEY&pid=Api&P=0&h=220" class="card-img-top" alt="Combo Meal Offer">
+        <div class="card-body">
+          <h5>Combo Meal Deals</h5>
+          <p>Get a combo of your favorite meals (sandwich, juice, and salad) at a discounted price. Perfect for a filling lunch!</p>
+          <button class="btn">Claim Offer</button>
+        </div>
+      </div>
+    </div>
+    <!-- Offer 5: Student Meal Subscription -->
+    <div class="col-md-4">
+      <div class="offer-card">
+        <img src=https://tse3.mm.bing.net/th?id=OIP.9r63xwJkzVQd6Pkj-EWGMQHaHa&pid=Api&P=0&h=220" class="card-img-top" alt="Meal Subscription Offer">
+        <div class="card-body">
+          <h5>Meal Subscription Discount</h5>
+          <p>Sign up for the monthly meal subscription plan at the canteen and get a 10% discount on all meals!</p>
+          <button class="btn">Claim Offer</button>
+        </div>
+      </div>
+    </div>
+    <!-- Offer 6: Happy Hour Discount -->
+    <div class="col-md-4">
+      <div class="offer-card">
+        <img src="https://tse2.mm.bing.net/th?id=OIP.TS56uJKW_h-6NWkYdNcuVQHaFO&pid=Api&P=0&h=220" class="card-img-top" alt="Happy Hour Offer">
+<div class="card-body">
+    <h5>Happy Hour Discount</h5>
+    <p>Enjoy a 20% discount on all beverages during the campus canteen’s happy hour from 3 PM to 5 PM. Perfect for a mid-afternoon refreshment!</p>
+    <button class="btn" onclick="generateCode()">Claim Now</button>
+  </div>
+</div>
+</div>
+</div>
+</div>
+
+<!-- Footer -->
+<div class="footer">
+<p>&copy; 2024 College Food Offers. All Rights Reserved.</p>
+<div class="social-icons">
+<a href="#" class="me-3"><i class="fa-brands fa-facebook"></i></a>
+<a href="#" class="me-3"><i class="fa-brands fa-instagram"></i></a>
+<a href="#" class="me-3"><i class="fa-brands fa-twitter"></i></a>
+</div>
+</div>
+
+<!-- BOOTSTRAP JS --><script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+<script>
+  function generateCode() {
+    const letters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+    const numbers = "0123456789";
+
+    let code = "";
+    for (let i = 0; i < 3; i++) {
+      code += letters.charAt(Math.floor(Math.random() * letters.length));
+    }
+    for (let i = 0; i < 4; i++) {
+      code += numbers.charAt(Math.floor(Math.random() * numbers.length));
+    }
+
+    alert("Your voucher code is: ${code}");
+  }
+</script>
+</body>
+</html>

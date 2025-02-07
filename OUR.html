@@ -1,0 +1,511 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Food Filters</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f8f9fa;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            color: #343a40;
+            margin: 30px 0;
+            text-align: center;
+            font-weight: 600;
+        }
+
+        .filter-section {
+            display: flex;
+            justify-content: center;
+            margin: 20px 0;
+            width: 100%;
+        }
+
+        .filter-section select {
+            padding: 12px;
+            font-size: 16px;
+            border-radius: 8px;
+            border: 2px solid #ccc;
+            background-color: #fff;
+            color: #555;
+            width: 220px;
+            transition: border-color 0.3s;
+        }
+
+        .filter-section select:focus {
+            border-color: #007bff;
+        }
+
+        .dish-container {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr); /* 4 items per row */
+            gap: 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            transition: margin-right 0.3s ease, padding-right 0.3s ease; /* Adding transition */
+        }
+
+        .dish {
+            position: relative;
+            background: #fff;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            text-align: center;
+            padding: 10px;
+        }
+
+        .dish img {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+            border-radius: 10px;
+        }
+
+        .dish:hover {
+            transform: scale(1.05);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+        }
+
+        .dish-details {
+            padding: 10px;
+        }
+
+        .dish-details h3 {
+            margin: 0;
+            font-size: 18px;
+            font-weight: bold;
+            color: #333;
+        }
+
+        .dish-details p {
+            margin: 5px 0 15px;
+            font-size: 14px;
+            color: #777;
+        }
+
+        .add-to-cart {
+            padding: 12px;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 16px;
+            width: 80%;
+            transition: background-color 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .add-to-cart:hover {
+            background-color: #0056b3;
+        }
+
+        .cart-sidebar {
+            position: fixed;
+            top: 0;
+            right: -350px; /* Sidebar hidden initially */
+            width: 350px;
+            height: 100%;
+            background: #343a40;
+            color: #fff;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            transition: right 0.3s ease;
+            border-left: none;
+            border-radius: 10px 0 0 10px;
+            box-shadow: -2px 0px 10px rgba(0, 0, 0, 0.2);
+        }
+
+        .cart-sidebar.show {
+            right: 0; /* Sidebar will slide in */
+        }
+
+        .cart-sidebar h2 {
+            margin: 0;
+            font-size: 24px;
+            padding-bottom: 15px;
+            border-bottom: 2px solid #007bff;
+            color: #007bff;
+            font-weight: bold;
+        }
+
+        .cart-item {
+            margin: 10px 0;
+            padding: 10px;
+            background-color: #444;
+            border-radius: 8px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .cart-item h4 {
+            margin: 0;
+            font-size: 16px;
+        }
+
+        .quantity-control {
+            display: flex;
+            align-items: center;
+        }
+
+        .quantity-control button {
+            padding: 5px 10px;
+            font-size: 16px;
+            cursor: pointer;
+            background-color: #fff;
+            border: none;
+            color: #333;
+            border-radius: 5px;
+        }
+
+        .cart-item button.remove-btn {
+            margin-left: 10px;
+            padding: 5px 10px;
+            background-color: #e74c3c;
+            border: none;
+            color: #fff;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .cart-item button.remove-btn:hover {
+            background-color: #c0392b;
+        }
+
+        .checkout-btn {
+            margin-top: auto;
+            padding: 12px;
+            background-color: #28a745;
+            color: #fff;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 16px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .checkout-btn:hover {
+            background-color: #218838;
+        }
+
+        footer {
+            margin-top: 30px;
+            text-align: center;
+            color: #fff;
+            background-color: #343a40;
+            padding: 20px 0;
+            width: 100%;
+        }
+        header {
+            width: 100%;
+            background-color: #343a40;
+            color: #fff;
+            padding: 15px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        }
+        header h1 {
+            margin: 0;
+            font-size: 1.8rem;
+        }
+        header .home-btn {
+            text-decoration: none;
+            color: #fff;
+            background-color: #007bff;
+            padding: 10px 20px;
+            border-radius: 8px;
+            font-size: 16px;
+            transition: background-color 0.3s ease;
+        }
+        header .home-btn:hover {
+            background-color: #0056b3;
+        }
+        .search-bar {
+            margin: 15px 0;
+            display: flex;
+            justify-content: center;
+            width: 100%;
+        }
+        .search-bar input {
+            width: 60%;
+            padding: 10px;
+            font-size: 16px;
+            border: 2px solid #ccc;
+            border-radius: 8px;
+            outline: none;
+            transition: border-color 0.3s ease;
+        }
+        .search-bar input:focus {
+            border-color: #007bff;
+        }
+        .cart-sidebar .clear-cart-btn {
+            margin-top: 10px;
+            padding: 12px;
+            background-color: #e74c3c;
+            color: #fff;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 16px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        .cart-sidebar .clear-cart-btn:hover {
+            background-color: #c0392b;
+        }
+        .top-header {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    background-color: #f8f9fa;
+    padding: 10px 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.home-button {
+    position: absolute;
+    left: 20px; /* Distance from the left */
+    top: 50%; /* Vertically center relative to the header */
+    transform: translateY(-50%);
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    transition: background-color 0.3s ease;
+}
+
+.home-button:hover {
+    background-color: #0056b3;
+}
+
+        footer {
+            margin-top: 30px;
+            text-align: center;
+            color: #fff;
+            background-color: #343a40;
+            padding: 20px 0;
+            width: 100%;
+        }
+
+    </style>
+</head>
+<body>
+    <header class="top-header">
+        <button class="home-button" onclick="goToHome()">Home</button>
+        <h1>Choose Your Favorite Meal</h1>
+    
+</header>
+     <!-- Search Bar -->
+     <div class="search-bar">
+        <input type="text" id="searchInput" placeholder="Search for a dish..." onkeyup="searchDishes()">
+    </div>
+
+    <div class="filter-section">
+        <select id="filterDropdown" onchange="filterDishes()">
+            <option value="all">All</option>
+            <option value="rice">Rice</option>
+            <option value="roti">Chapati</option>
+            <option value="curry">Curry</option>
+            <option value="dessert">Dessert</option>
+        </select>
+    </div>
+   
+
+    <div class="dish-container" id="dishContainer">
+        <!-- Rice Category -->
+        <div class="dish" data-category="rice">
+            <img src="https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/delish-fried-rice-020-1543875572.jpg?crop=0.668xw:1.00xh;0.262xw,0&resize=480:*" alt="Fried Rice">
+            <div class="dish-details">
+                <h3>Fried Rice</h3>
+                <p>Delicious fried rice with vegetables and spices.</p>
+            </div>
+            <button class="add-to-cart" onclick="addToCart('Fried Rice')">Add to Cart</button>
+        </div>
+        <div class="dish" data-category="rice">
+            <img src="https://i1.wp.com/culinarylabz.com/wp-content/uploads/2019/11/img_20191107_2014553556435213378713994456.jpg?w=3000&ssl=1" alt="Egg Rice">
+            <div class="dish-details">
+                <h3>Egg Rice</h3>
+                <p>Stir-fried rice with scrambled eggs and seasoning.</p>
+            </div>
+            <button class="add-to-cart" onclick="addToCart('Egg Rice')">Add to Cart</button>
+        </div>
+        <div class="dish" data-category="rice">
+            <img src="https://i0.wp.com/vegecravings.com/wp-content/uploads/2016/07/veg-pulao-recipe-step-by-step-instructions.jpg?fit=3840%2C2992&quality=30&strip=all&ssl=1" alt="Veg Pulao">
+            <div class="dish-details">
+                <h3>Veg Pulao</h3>
+                <p>Aromatic rice with mixed vegetables and spices.</p>
+            </div>
+            <button class="add-to-cart" onclick="addToCart('Veg Pulao')">Add to Cart</button>
+        </div>
+
+        <!-- Chapati Category -->
+        <div class="dish" data-category="roti">
+            <img src="https://recipes.timesofindia.com/thumb/61203720.cms?imgsize=670417&width=800&height=800" alt="Chapati">
+            <div class="dish-details">
+                <h3>Chapati</h3>
+                <p>Soft and fluffy whole wheat Indian flatbread.</p>
+            </div>
+            <button class="add-to-cart" onclick="addToCart('Chapati')">Add to Cart</button>
+        </div>
+        <div class="dish" data-category="roti">
+            <img src="https://appansbiriyani.com/wp-content/uploads/2022/04/Butter-Naan2.jpg" alt="Butter Naan">
+            <div class="dish-details">
+                <h3>Butter Naan</h3>
+                <p>Soft naan bread brushed with butter.</p>
+            </div>
+            <button class="add-to-cart" onclick="addToCart('Butter Naan')">Add to Cart</button>
+        </div>
+
+        <!-- Curry Category -->
+        <div class="dish" data-category="curry">
+            <img src="https://www.whiskaffair.com/wp-content/uploads/2020/04/Kerala-Egg-Curry-3.jpg" alt="Egg Curry">
+            <div class="dish-details">
+                <h3>Egg Curry</h3>
+                <p>Hard-boiled eggs in a spicy, flavorful curry.</p>
+            </div>
+            <button class="add-to-cart" onclick="addToCart('Egg Curry')">Add to Cart</button>
+        </div>
+        <div class="dish" data-category="curry">
+            <img src="https://thecurrymommy.com/wp-content/uploads/2021/09/butter-paneer-masala-one-pot.jpg" alt="Paneer Masala">
+            <div class="dish-details">
+                <h3>Paneer Masala</h3>
+                <p>Paneer in a rich and creamy masala sauce.</p>
+            </div>
+            <button class="add-to-cart" onclick="addToCart('Paneer Masala')">Add to Cart</button>
+        </div>
+
+        <div class="dish" data-category="curry">
+            <img src="https://www.homehealthyrecipes.com/wp-content/uploads/2021/06/pexels-mian-shahbaz-anjum-6113813.jepg_-1024x682.jpg" alt="Chicken Masala">
+            <div class="dish-details">
+                <h3>Chicken Masala</h3>
+                <p>Chicken in a rich and creamy masala sauce.</p>
+            </div>
+            <button class="add-to-cart" onclick="addToCart('Paneer Masala')">Add to Cart</button>
+        </div>
+    </div>
+
+    <div class="cart-sidebar" id="cartSidebar">
+        <h2>Your Cart</h2>
+        <div id="cartItems"></div>
+        
+        <button class="checkout-btn" onclick="checkout()">Checkout</button>
+        <footer>
+            <button onclick="closeSidebar()">Close</button>
+        </footer>
+    </div>
+
+
+    <footer>
+        <p>&copy; 2024 Food Filter App. All rights reserved.</p>
+    </footer>
+
+    <script>
+        let cart = [];
+        function goToHome() {
+    window.location.href = "index.html"; 
+}
+
+        function filterDishes() {
+            const dropdown = document.getElementById('filterDropdown');
+            const category = dropdown.value;
+            const dishes = document.querySelectorAll('.dish');
+            dishes.forEach((dish) => {
+                dish.style.display = category === 'all' || dish.getAttribute('data-category') === category ? 'block' : 'none';
+            });
+        }
+
+        function addToCart(dishName) {
+            let existingDish = cart.find(item => item.name === dishName);
+            if (existingDish) {
+                existingDish.qty++;
+            } else {
+                cart.push({ name: dishName, qty: 1 });
+            }
+            updateCart();
+        }
+        function searchDishes() {
+            const input = document.getElementById('searchInput').value.toLowerCase();
+            const dishes = document.querySelectorAll('.dish');
+            dishes.forEach(dish => {
+                const name = dish.querySelector('.dish-details h3').textContent.toLowerCase();
+                dish.style.display = name.includes(input) ? 'block' : 'none';
+            });
+        }
+
+        function updateCart() {
+            const cartItemsContainer = document.getElementById('cartItems');
+            cartItemsContainer.innerHTML = '';
+
+            cart.forEach(item => {
+                const cartItemDiv = document.createElement('div');
+                cartItemDiv.classList.add('cart-item');
+                cartItemDiv.innerHTML = `
+                    <h4>${item.name}</h4>
+                    <div class="quantity-control">
+                        <button onclick="changeQuantity('${item.name}', 'decrease')">-</button>
+                        <span>${item.qty}</span>
+                        <button onclick="changeQuantity('${item.name}', 'increase')">+</button>
+                        <button class="remove-btn" onclick="removeItem('${item.name}')">Remove</button>
+                    </div>
+                `;
+                cartItemsContainer.appendChild(cartItemDiv);
+            });
+
+            document.getElementById('cartSidebar').classList.add('show');
+        }
+
+        function changeQuantity(dishName, action) {
+            const dish = cart.find(item => item.name === dishName);
+            if (dish) {
+                if (action === 'increase') {
+                    dish.qty++;
+                } else if (action === 'decrease' && dish.qty > 1) {
+                    dish.qty--;
+                }
+                updateCart();
+            }
+        }
+
+        function removeItem(dishName) {
+            cart = cart.filter(item => item.name !== dishName);
+            updateCart();
+        }
+
+        function checkout() {
+            alert('Thank you for ordering!');
+            closeSidebar();
+        }
+
+        function closeSidebar() {
+            document.getElementById('cartSidebar').classList.remove('show');
+        }
+    </script>
+
+</body>
+</html>

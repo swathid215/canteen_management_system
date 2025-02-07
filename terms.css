@@ -1,0 +1,28 @@
+body{
+    background-color: #f1f1f1;
+    font-family: 'Times New Roman', Times, serif;
+}
+
+h3{
+    color: red;
+}
+
+.width{
+    max-width: 960px;
+    margin: 100px auto;
+    padding: 48px;
+}
+p{
+    font-size: 18px;
+    color: gray;
+    text-align: justify;
+}
+
+@media (min-width: 415px) and (max-width: 920px){
+    .footer{
+        display: none;
+    }
+    body{
+        margin-bottom: 10px;
+    }
+}
